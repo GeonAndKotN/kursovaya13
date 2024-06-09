@@ -1,0 +1,86 @@
+﻿<Window x:Class="kursovaya13.mvvm.view.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kursovaya13.mvvm.view"
+        xmlns:vm="clr-namespace:kursovaya13.mvvm.viewmodel"
+        mc:Ignorable="d"
+        DataContext="{DynamicResource EditorTimeTableVM}"
+        Title="Расписание" Icon="/Sourse/kitay.png" Height="310" Width="1300">
+    <Window.Resources>
+        <vm:EditorTimeTableVM x:Key="EditorTimeTableVM"/>
+    </Window.Resources>
+    <Grid Background="CornflowerBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Source="/Sourse/PPK.png" Grid.Row="1" Cursor="Arrow"/>
+        <Image Source="/Sourse/PPK.png" Grid.Row="1" Grid.Column="3"/>
+        <!--вывод расписания-->
+        <DockPanel Grid.ColumnSpan="2" Margin="10" Grid.Row="1" Grid.Column="1">
+            <StackPanel>
+                <ListView Height="200" ItemsSource="{Binding TimeTables}" SelectedItem="{Binding SelectedTimeTable}" Background="AliceBlue">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="курс" DisplayMemberBinding="{Binding COURSE}"/>
+                            <GridViewColumn Header="группа" DisplayMemberBinding="{Binding GROUP}"/>
+                            <GridViewColumn Header="дисциплина" DisplayMemberBinding="{Binding LESSONS}"/>
+                            <GridViewColumn Header="преподаватель" DisplayMemberBinding="{Binding TEACHER}"/>
+                            <GridViewColumn Header="кабинет" DisplayMemberBinding="{Binding CABINET}"/>
+                            <GridViewColumn Header="№ пары" DisplayMemberBinding="{Binding PAIRNUMBER}"/>
+                            <GridViewColumn Header="День недели" DisplayMemberBinding="{Binding WEEKDAY}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </DockPanel>
+
+        <!--кнопки для управления расписанием-->
+        <DockPanel Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Center">
+            <Button Content="Добавить" Grid.Row="2" Width="160" Grid.Column="1" Command="{Binding Add}" Background="CadetBlue"/>
+            <Button Content="Удалить элемент" Grid.Row="2" Width="160" Grid.Column="2" Command="{Binding Remove}"  Background="CadetBlue"/>
+            <Button Content="Удалить расписание" Width="160" Command="{Binding DeleteList}"  Background="CadetBlue"/>
+            <Button Content="База данных" Width="160" Command="{Binding OpenBD}"  Background="CadetBlue"/>
+        </DockPanel>
+
+        <DockPanel Grid.ColumnSpan="10">
+            <Label Content="Курс:" />
+            <ComboBox DisplayMemberPath="Title"
+                          SelectedItem="{Binding SelectedCourse}" 
+                          ItemsSource="{Binding Course}"  Width="110" Background="AliceBlue"/>
+            <Label Content="Группы:" />
+            <ComboBox DisplayMemberPath="GroupTitle"
+                          SelectedItem="{Binding SelectedGroups}" 
+                          ItemsSource="{Binding Groups}"  Width="110" Background="AliceBlue"/>
+            <Label Content="Дисциплины:" />
+            <ComboBox DisplayMemberPath="LessonsTitle"
+                          SelectedItem="{Binding SelectedLessons}" 
+                          ItemsSource="{Binding Lessons}"  Width="150" Background="AliceBlue"/>
+            <Label Content="Преподователи:" />
+            <ComboBox DisplayMemberPath="TeacherTitle"
+                          SelectedItem="{Binding SelectedTeacher}" 
+                          ItemsSource="{Binding Teacher}"  Width="110" Background="AliceBlue"/>
+            <Label Content="Кабинеты: "/>
+            <ComboBox DisplayMemberPath="CabinetTitle"
+                          SelectedItem="{Binding SelectedCabinet}" 
+                          ItemsSource="{Binding Cabinet}"  Width="110" Background="AliceBlue"/>
+            <Label Content="№ пары:" />
+            <ComboBox Width="100" HorizontalAlignment="Left" DisplayMemberPath="Title"
+                      SelectedItem="{Binding SelectedPairNumber}"
+                      ItemsSource="{Binding PairNumber}" Background="AliceBlue"/>
+            <Label Content="День недели:" />
+            <ComboBox Width="100" HorizontalAlignment="Left" DisplayMemberPath="Title"
+                      SelectedItem="{Binding SelectedWeekDay}"
+                      ItemsSource="{Binding WeekDay}" Background="AliceBlue"/>
+        </DockPanel>
+    </Grid>
+</Window>
