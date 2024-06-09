@@ -54,32 +54,32 @@
 
         <DockPanel Grid.ColumnSpan="10">
             <Label Content="Курс:" />
-            <ComboBox DisplayMemberPath="Title"
+            <ComboBox DisplayMemberPath="Title" x:Name="CourseComboBox" SelectionChanged="ComboBox_SelectionChanged"
                           SelectedItem="{Binding SelectedCourse}" 
                           ItemsSource="{Binding Course}"  Width="110" Background="AliceBlue"/>
             <Label Content="Группы:" />
-            <ComboBox DisplayMemberPath="GroupTitle"
+            <ComboBox DisplayMemberPath="GroupTitle" x:Name="GroupsComboBox" SelectionChanged="ComboBox_SelectionChanged"
                           SelectedItem="{Binding SelectedGroups}" 
                           ItemsSource="{Binding Groups}"  Width="110" Background="AliceBlue"/>
             <Label Content="Дисциплины:" />
-            <ComboBox DisplayMemberPath="LessonsTitle"
+            <ComboBox DisplayMemberPath="LessonsTitle" x:Name="LessonComboBox" SelectionChanged="ComboBox_SelectionChanged"
                           SelectedItem="{Binding SelectedLessons}" 
                           ItemsSource="{Binding Lessons}"  Width="150" Background="AliceBlue"/>
             <Label Content="Преподователи:" />
-            <ComboBox DisplayMemberPath="TeacherTitle"
+            <ComboBox DisplayMemberPath="TeacherTitle" x:Name="TeacherComboBox" SelectionChanged="ComboBox_SelectionChanged"
                           SelectedItem="{Binding SelectedTeacher}" 
                           ItemsSource="{Binding Teacher}"  Width="110" Background="AliceBlue"/>
             <Label Content="Кабинеты: "/>
-            <ComboBox DisplayMemberPath="CabinetTitle"
+            <ComboBox DisplayMemberPath="CabinetTitle"  x:Name="CabinetComboBox" SelectionChanged="ComboBox_SelectionChanged"
                           SelectedItem="{Binding SelectedCabinet}" 
                           ItemsSource="{Binding Cabinet}"  Width="110" Background="AliceBlue"/>
             <Label Content="№ пары:" />
             <ComboBox Width="100" HorizontalAlignment="Left" DisplayMemberPath="Title"
-                      SelectedItem="{Binding SelectedPairNumber}"
+                      SelectedItem="{Binding SelectedPairNumber}" x:Name="PairNumComboBox" SelectionChanged="ComboBox_SelectionChanged"
                       ItemsSource="{Binding PairNumber}" Background="AliceBlue"/>
             <Label Content="День недели:" />
             <ComboBox Width="100" HorizontalAlignment="Left" DisplayMemberPath="Title"
-                      SelectedItem="{Binding SelectedWeekDay}"
+                      SelectedItem="{Binding SelectedWeekDay}" x:Name="WeekdayComboBox" SelectionChanged="ComboBox_SelectionChanged"
                       ItemsSource="{Binding WeekDay}" Background="AliceBlue"/>
         </DockPanel>
     </Grid>

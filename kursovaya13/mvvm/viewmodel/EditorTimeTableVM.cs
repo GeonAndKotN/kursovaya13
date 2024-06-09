@@ -25,6 +25,7 @@ namespace kursovaya13.mvvm.viewmodel
                 Signal();
             }
         }
+
         private Lessons lessons = new();
         public Lessons SelectedLessons
         {
@@ -167,7 +168,7 @@ namespace kursovaya13.mvvm.viewmodel
         {
             TimeTables = timeTables;
         }
-        public ObservableCollection<TimeTable>? TimeTables { get; }
+        public ObservableCollection<TimeTable>? TimeTables { get; set; }
 
         public EditorTimeTableVM(ObservableCollection<Lessons>? lessons)
         {
@@ -210,5 +211,6 @@ namespace kursovaya13.mvvm.viewmodel
             Course = courses;
         }
         public ObservableCollection<Course>? Course { get; set; }
+
     }
 }
