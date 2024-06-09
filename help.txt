@@ -1,0 +1,49 @@
+        private readonly EditorTimeTableVM editorTimeTableVM;
+        public MainWindow()
+        {
+            InitializeComponent();
+            editorTimeTableVM = new EditorTimeTableVM();
+            DataContext = editorTimeTableVM;
+            // Получаем представление данных
+            ICollectionView view = CollectionViewSource.GetDefaultView(editorTimeTableVM.TimeTables);
+            // Применяем фильтр к представлению
+            view.Filter = Filter;
+        }
+        private bool Filter(object item)
+        {
+            TimeTable entry = item as TimeTable;
+            // Проверяем, соответствует ли элемент фильтру
+            bool matchesSelectedValues =
+                (string.IsNullOrEmpty(CourseComboBox.SelectedItem?.ToString()) || entry.COURSE == CourseComboBox.SelectedItem?.ToString()) &&
+                (string.IsNullOrEmpty(GroupsComboBox.SelectedItem?.ToString()) || entry.GROUP == GroupsComboBox.SelectedItem?.ToString()) &&
+                (string.IsNullOrEmpty(LessonComboBox.SelectedItem?.ToString()) || entry.LESSONS == LessonComboBox.SelectedItem?.ToString()) &&
+                (string.IsNullOrEmpty(TeacherComboBox.SelectedItem?.ToString()) || entry.TEACHER == TeacherComboBox.SelectedItem?.ToString()) &&
+                (string.IsNullOrEmpty(CabinetComboBox.SelectedItem?.ToString()) || entry.CABINET == CabinetComboBox.SelectedItem?.ToString()) &&
+                (string.IsNullOrEmpty(PairNumComboBox.SelectedItem?.ToString()) || entry.PAIRNUMBER == PairNumComboBox.SelectedItem?.ToString()) &&
+                (string.IsNullOrEmpty(WeekdayComboBox.SelectedItem?.ToString()) || entry.WEEKDAY == WeekdayComboBox.SelectedItem?.ToString());
+
+            // Показываем запись, если выбрано хотя бы одно значение
+            if (!string.IsNullOrEmpty(CourseComboBox.SelectedItem?.ToString()) ||
+                !string.IsNullOrEmpty(GroupsComboBox.SelectedItem?.ToString()) ||
+                !string.IsNullOrEmpty(LessonComboBox.SelectedItem?.ToString()) ||
+                !string.IsNullOrEmpty(TeacherComboBox.SelectedItem?.ToString()) ||
+                !string.IsNullOrEmpty(CabinetComboBox.SelectedItem?.ToString()) ||
+                !string.IsNullOrEmpty(PairNumComboBox.SelectedItem?.ToString()) ||
+                !string.IsNullOrEmpty(WeekdayComboBox.SelectedItem?.ToString()))
+            {
+                return matchesSelectedValues;
+            }
+            // Показываем все записи, если ничего не выбрано
+            else
+            {
+                return true;
+            }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Обновляем представление данных
+            ICollectionView view = CollectionViewSource.GetDefaultView(editorTimeTableVM.TimeTables);
+            view.Refresh();
+        }
+    }
