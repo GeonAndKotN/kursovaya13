@@ -62,11 +62,8 @@ namespace kursovaya13.mvvm.viewmodel
             get => teacher;
             set
             {
-                if (teacher.Absent != "нет" || teacher.Absent != "Нет")
-                {
                     teacher = value;
                     Signal();
-                }
             }
         }
         private PairNumber pairNumber = new();

@@ -84,13 +84,22 @@ namespace kursovaya13.mvvm.view
 
         private void ClearFiltr(object sender, RoutedEventArgs e)
         {
-            CourseComboBox.SelectedItem = null;
-            GroupsComboBox.SelectedItem = null;
-            LessonComboBox.SelectedItem = null;
-            TeacherComboBox.SelectedItem = null;
-            CabinetComboBox.SelectedItem = null;
-            PairNumComboBox.SelectedItem = null;
-            WeekdayComboBox.SelectedItem = null;
+            if (CourseComboBox.SelectedItem != null ||
+            GroupsComboBox.SelectedItem != null ||
+            LessonComboBox.SelectedItem != null ||
+            TeacherComboBox.SelectedItem != null ||
+            CabinetComboBox.SelectedItem != null ||
+            PairNumComboBox.SelectedItem != null ||
+            WeekdayComboBox.SelectedItem != null)
+            {
+                CourseComboBox.SelectedItem = null;
+                GroupsComboBox.SelectedItem = null;
+                LessonComboBox.SelectedItem = null;
+                TeacherComboBox.SelectedItem = null;
+                CabinetComboBox.SelectedItem = null;
+                PairNumComboBox.SelectedItem = null;
+                WeekdayComboBox.SelectedItem = null;
+            }
         }
     }
 }
