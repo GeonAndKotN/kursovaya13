@@ -151,8 +151,8 @@ namespace kursovaya13.mvvm.model
             if (connect == null)
                 return;
 
-            string sql = "DELETE FROM timeTable WHERE id = '" + timetable.id + "';";
-            sql += "DELETE FROM timeTable WHERE id = '" + timetable.id + "';";
+            string sql = "DELETE FROM timetable WHERE id = '" + timetable.id + "';";
+            sql += "DELETE FROM timetable WHERE id = '" + timetable.id + "';";
 
             using (var mc = new MySqlCommand(sql, connect))
                 mc.ExecuteNonQuery();
@@ -191,9 +191,8 @@ namespace kursovaya13.mvvm.model
 
         //internal IEnumerable<TimeTable> Search(string searchText)
         //{
-        //    string sql = "SELECT FROM Timetable WHERE AND";
-        //    sql += " AND ( LIKE '%" + searchText + "%'";
-        //    sql += " OR LIKE '%" + searchText + "%') order by";
+        //    string sql = "SELECT * FROM Timetable WHERE "+searchText;
+        //    sql += "LIKE '%" + searchText + "%')";
 
         //    if (selectedTimeTable.id != 0)
         //    {

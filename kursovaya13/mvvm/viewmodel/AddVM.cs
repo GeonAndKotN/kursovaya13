@@ -128,8 +128,8 @@ namespace kursovaya13.mvvm.viewmodel
             {
                 if (MessageBox.Show("Вы уверены, что хотите внести эти данные?", "Внимание!", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    if (SelectedGroups == null || SelectedLessons == null || SelectedCabinet == null ||
-                SelectedPairNumber == null || SelectedWeekDay == null || SelectedTeacher == null)
+                    if (SelectedGroups.GroupTitle == "" || SelectedLessons.LessonsTitle == "" || SelectedCabinet.CabinetTitle == "" ||
+                SelectedPairNumber.Title == "" || SelectedWeekDay.Title == "" || SelectedTeacher.TeacherTitle == "")
                     {
                         MessageBox.Show("Не все данные выбраны", "Предупреждение",
                         MessageBoxButton.OK, MessageBoxImage.Warning);
