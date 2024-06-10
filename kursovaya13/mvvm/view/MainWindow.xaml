@@ -28,7 +28,7 @@
         <!--вывод расписания-->
         <DockPanel Grid.ColumnSpan="2" Margin="10" Grid.Row="1" Grid.Column="1">
             <StackPanel>
-                <ListView Height="200" ItemsSource="{Binding TimeTables}" SelectedItem="{Binding SelectedTimeTable}" Background="AliceBlue">
+                <ListView Height="200" ItemsSource="{Binding TimeTables}" SelectedItem="{Binding SelectedSearchTimeTable}" Background="AliceBlue">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="курс" DisplayMemberBinding="{Binding COURSE}"/>

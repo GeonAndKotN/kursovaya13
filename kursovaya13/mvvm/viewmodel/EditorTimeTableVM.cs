@@ -15,6 +15,17 @@ namespace kursovaya13.mvvm.viewmodel
 {
     public class EditorTimeTableVM : BaseVM
     {
+        private SearchTimeTable searchTimeTable = new();
+        public SearchTimeTable SelectedSearchTimeTable
+        {
+            get => searchTimeTable;
+            set
+            {
+                searchTimeTable = value;
+                Signal();
+            }
+        }
+
         private TimeTable timeTable = new();
         public TimeTable SelectedTimeTable
         {
@@ -129,6 +140,7 @@ namespace kursovaya13.mvvm.viewmodel
                 "course.id AS idCourse, course.Title AS TitleCourse " +
                 "FROM timetable, ggroups, lessons, cabinet, teacher, pairnumber, weekday, course";
             TimeTables = new ObservableCollection<TimeTable>(TimeTableRepository.Instance.GetAllTimeTable(sql));
+            SearchTimeTable = new ObservableCollection<SearchTimeTable>(SearchTimeTableRepository.Instance.GetAllTimeTable(sql));
             Add = new VmCommand(() =>
             {
                 AddListWindow addListWindow = new AddListWindow();
@@ -164,6 +176,12 @@ namespace kursovaya13.mvvm.viewmodel
                 bdWindow.ShowDialog();
             });
         }
+
+        public EditorTimeTableVM(ObservableCollection<SearchTimeTable>? searchTimeTable)
+        {
+            SearchTimeTable = searchTimeTable;
+        }
+        public ObservableCollection<SearchTimeTable>? SearchTimeTable { get; set; }
 
         public EditorTimeTableVM(ObservableCollection<TimeTable>? timeTables)
         {
