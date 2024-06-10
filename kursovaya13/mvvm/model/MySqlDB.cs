@@ -17,9 +17,9 @@ namespace kursovaya13.mvvm.model
         {
             MySqlConnectionStringBuilder stringBuilder = new();
             stringBuilder.UserID = "student";
-            stringBuilder.Password = "";
+            stringBuilder.Password = "student";
             stringBuilder.Database = "lessonsbykiprin";
-            stringBuilder.Server = "localhost"; //192.168.200.13
+            stringBuilder.Server = "192.168.200.13"; //192.168.200.13
             stringBuilder.CharacterSet = "utf8mb4";
             mySqlConnection = new MySqlConnection(stringBuilder.ToString());
             OpenConnection();

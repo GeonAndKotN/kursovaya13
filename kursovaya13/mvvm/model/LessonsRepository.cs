@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using MySqlConnector;
 
 namespace kursovaya13.mvvm.model
@@ -80,13 +81,19 @@ namespace kursovaya13.mvvm.model
             var connect = MySqlDB.Instance.GetConnection();
             if (connect == null)
                 return;
-
-            string sql = "UPDATE lessons SET Title = @LessonsTitle, Teacher_IDL = @Teacher_IDL WHERE Lessons_Id = " + lessons.Lessons_ID;
-            using (var mc = new MySqlCommand(sql, connect))
+            try
             {
-                mc.Parameters.Add(new MySqlParameter("LessonsTitle", lessons.LessonsTitle));
-                mc.Parameters.Add(new MySqlParameter("Teacher_IDL", lessons.Teacher_IDL));
-                mc.ExecuteNonQuery();
+                string sql = "UPDATE lessons SET Title = @LessonsTitle, Teacher_IDL = @Teacher_IDL WHERE Lessons_Id = " + lessons.Lessons_ID;
+                using (var mc = new MySqlCommand(sql, connect))
+                {
+                    mc.Parameters.Add(new MySqlParameter("LessonsTitle", lessons.LessonsTitle));
+                    mc.Parameters.Add(new MySqlParameter("Teacher_IDL", lessons.Teacher_IDL));
+                    mc.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

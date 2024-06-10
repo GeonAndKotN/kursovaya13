@@ -147,6 +147,10 @@ namespace kursovaya13.mvvm.viewmodel
                         if (timeTable.id == 0)
                             TimeTableRepository.Instance.AddTimeTable(timeTable);
                         TimeTableRepository.Instance.GetAllTimeTable(sql);
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Show();
+                        Window MainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+                        MainWindow?.Close();
                     }
                 }
             });

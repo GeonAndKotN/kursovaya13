@@ -98,21 +98,31 @@ namespace kursovaya13.mvvm.viewmodel
             });
             AddTeacher = new VmCommand(() =>
             {
-                if (teacher.Teacher_ID == 0)
-                    TeacherRepository.Instance.AddTeacher(SelectedTeacher);
+                if (teacher.TeacherTitle != "" && teacher.Absent != "")
+                    if (teacher.Teacher_ID == 0)
+                    {
+                        TeacherRepository.Instance.AddTeacher(SelectedTeacher);
+                        BDWindow bDWindow = new BDWindow();
+                        bDWindow.Show();
+                        Window MainWindow = Application.Current.Windows.OfType<BDWindow>().FirstOrDefault();
+                        MainWindow?.Close();
+                    }
             });
             AddCabinet = new VmCommand(() =>
             {
-                if (cabinet.Cabinet_ID == 0)
+                if(cabinet.CabinetTitle != "" && cabinet.Available != "" && cabinet.Appointment != "")
+                if(cabinet.Cabinet_ID == 0)
                     CabinetRepository.Instance.AddCabinet(cabinet);
             });
             AddGroup = new VmCommand(() =>
             {
+                if(groups.GroupTitle != "" && groups.CourseTitleG != "")
                 if (groups.Group_ID == 0)
                     GroupsRepository.Instance.AddGroups(groups);
             });
             AddLessons = new VmCommand(() =>
             {
+                if(lessons.LessonsTitle != "" && lessons.Teacher_IDL != 0)
                 if (lessons.Lessons_ID == 0)
                     LessonsRepository.Instance.AddLessons(lessons);
             });

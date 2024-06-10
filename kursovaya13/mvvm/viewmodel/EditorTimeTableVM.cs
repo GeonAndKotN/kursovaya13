@@ -155,6 +155,10 @@ namespace kursovaya13.mvvm.viewmodel
                 {
                     TimeTableRepository.Instance.RemoveAll(SelectedTimeTable);
                     TimeTables.Remove(SelectedTimeTable);
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    Window MainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+                    MainWindow?.Close();
                 }
             });
             OpenBD = new VmCommand(() =>

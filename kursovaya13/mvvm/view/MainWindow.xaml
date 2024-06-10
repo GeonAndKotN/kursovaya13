@@ -46,6 +46,7 @@
 
         <!--кнопки для управления расписанием-->
         <DockPanel Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Center">
+            <Button Content="Очистить фильт" Grid.Row="2" Width="160" Grid.Column="1" Click="ClearFiltr" Background="CadetBlue"/>
             <Button Content="Добавить" Grid.Row="2" Width="160" Grid.Column="1" Command="{Binding Add}" Background="CadetBlue"/>
             <Button Content="Удалить элемент" Grid.Row="2" Width="160" Grid.Column="2" Command="{Binding Remove}"  Background="CadetBlue"/>
             <Button Content="Удалить расписание" Width="160" Command="{Binding DeleteList}"  Background="CadetBlue"/>
